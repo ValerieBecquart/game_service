@@ -3,8 +3,7 @@ package fact.it.game_service.controller;
 import fact.it.game_service.model.Game;
 import fact.it.game_service.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -28,9 +27,40 @@ public class GameRestController {
     }
 
     //get all questions
-    @RequestMapping("game")
+    @RequestMapping("question")
     public List<Game> getAllQuestions(){
+
         return gameRepository.findAll();
     }
+
+    //POST: question
+    @PostMapping("/question")
+    public Game createQuestion(@RequestBody Game question){
+        return gameRepository.save(question);
+    }
+
+    //PUT:
+    @PutMapping("/question/{number}")
+    public Game updateQuestion(@RequestBody Game questionDetails, @PathVariable int number){
+        Game q = gameRepository.findGameByGameId(number);
+        q.setQuestion(questionDetails.getQuestion());
+        q.setTheme(questionDetails.getTheme());
+        q.setX(questionDetails.getX());
+        q.setY(questionDetails.getY());
+        q.setCorrectanswer(questionDetails.getCorrectanswer());
+        q.setAnswertwo(questionDetails.getAnswertwo());
+        q.setAnswerthree(questionDetails.getAnswerthree());
+        return gameRepository.save(q);
+    }
+
+
+    //DELETE: question
+    @DeleteMapping("/question/{number}")
+    public void deleteQuestion(@PathVariable int number){
+        Game q = gameRepository.findGameByGameId(number);
+        gameRepository.delete(q);
+    }
+
+
 
 }
