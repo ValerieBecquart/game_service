@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+//GAME CLASS
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
