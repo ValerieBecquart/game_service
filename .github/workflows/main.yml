@@ -18,5 +18,11 @@ jobs:
       - name: Set up MariaDB for integration tests
         uses: getong/mariadb-action@v1.1
         with:
-          mysql database: 'gamedb_test'  # Optional, default value is "test". The specified database which will be create
+          mysql database: 'gamedb_test'  # Optional, default value is "test". The specified database which will be created
           mysql root password: ${{ secrets.MARIADB_ROOT_PASSWORD }} # Required if "mysql user" is empty, default is empty. The root superuser password
+
+      - name: Build, test and package project
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=valeriebecquart_game_service
