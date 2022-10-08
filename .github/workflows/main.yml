@@ -1,0 +1,16 @@
+name: Build, test and deliver container
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Java build, test, deliver container
+    steps:
+      - name: check out repository
+        uses: actions/checkout@v1
+
+      - name: Set up JDK 11
+        user: actions/setup-javq@v1
+        with:
+          java-version: 11
