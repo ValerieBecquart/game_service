@@ -14,3 +14,9 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+
+      - name: Set up MariaDB for integration tests
+        uses: getong/mariadb-action@v1.1
+        with:
+          mysql database: 'gamedb_test'  # Optional, default value is "test". The specified database which will be create
+          mysql root password: ${{ secrets.MARIADB_ROOT_PASSWORD }} # Required if "mysql user" is empty, default is empty. The root superuser password
