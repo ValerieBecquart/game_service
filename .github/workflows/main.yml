@@ -22,7 +22,6 @@ jobs:
           mysql root password: ${{ secrets.MARIADB_ROOT_PASSWORD }} # Required if "mysql user" is empty, default is empty. The root superuser password
 
       - name: Build, test and package project
-        uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
