@@ -32,7 +32,7 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker Build
-        run: docker build -t ${{ secrets.DOCKER_USER }}/game-service:latest .
+        run: docker build -t ${{ secrets.DOCKER_USER }}/game_service:latest .
 
       - name: Upload container to Docker Hub with Push
-        run: docker push ${{ secrets.DOCKER_USER }}/game-service-ex:latest
+        run: docker push ${{ secrets.DOCKER_USER }}/game_service:latest
