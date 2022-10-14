@@ -16,6 +16,7 @@
     <properties>
         <java.version>11</java.version>
         <sonar.organization>valeriebecquart</sonar.organization>
+        <sonar.projectKey>valerievecquart_game_service</sonar.projectKey>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     <dependencies>
