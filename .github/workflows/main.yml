@@ -38,9 +38,8 @@ jobs:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      ### Docker build and push ###
-      - name: Docker Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: user/app:latest
+      - name: Docker Build
+        run: docker build -t ${{ secrets.DOCKER_USER }}/game_service:latest .
+
+      - name: Upload container to Docker Hub with Push
+        run: docker push ${{ secrets.DOCKER_USER }}/game_service:latest
