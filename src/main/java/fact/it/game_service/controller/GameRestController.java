@@ -27,10 +27,16 @@ public class GameRestController {
     }
 
     //get all questions
-    @RequestMapping("question")
+    @GetMapping("/question")
     public List<Game> getAllQuestions(){
 
         return gameRepository.findAll();
+    }
+
+    @GetMapping("/question/{id}")
+    public Game getQuestionById(@PathVariable int id){
+        Game q = gameRepository.findGameByGameId(id);
+        return q;
     }
 
     //POST: question
