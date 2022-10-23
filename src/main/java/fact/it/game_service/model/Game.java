@@ -11,25 +11,28 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int gameId;
     private String question;
-    private String theme;
+    private int level;
     private double x;
     private double y;
-    private String correctanswer;
-    private String answertwo;
-    private String answerthree;
+    private String correctanswer, answertwo, answerthree;
+    private int scoreOffensive, scoreDefensive;
+    private String objectName;
 
     public Game() {
     }
 
-    public Game(int gameId, String question, String theme, double x, double y, String correctanswer, String answertwo, String answerthree) {
+    public Game(int gameId, String question, int level, double x, double y, String correctanswer, String answertwo, String answerthree, int scoreDefensive, int scoreOffensive, String objectName ) {
         this.gameId = gameId;
         this.question = question;
-        this.theme = theme;
+        this.level = level;
         this.x = x;
         this.y = y;
         this.correctanswer = correctanswer;
         this.answertwo = answertwo;
         this.answerthree = answerthree;
+        this.objectName =  objectName;
+        this.scoreDefensive = scoreDefensive;
+        this.scoreOffensive=scoreOffensive;
     }
 
     public int getGameId() {
@@ -48,12 +51,12 @@ public class Game {
         this.question = question;
     }
 
-    public String getTheme() {
-        return theme;
+    public int getLevel() {
+        return level;
     }
 
-    public void setTheme(String theme) {
-        this.theme = theme;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public double getX() {
@@ -95,4 +98,30 @@ public class Game {
     public void setAnswerthree(String answerthree) {
         this.answerthree = answerthree;
     }
+
+    public int getScoreOffensive() {
+        return scoreOffensive;
+    }
+
+    public void setScoreOffensive(int scoreOffensive) {
+        this.scoreOffensive = scoreOffensive;
+    }
+
+    public int getScoreDefensive() {
+        return scoreDefensive;
+    }
+
+    public void setScoreDefensive(int scoreDefensive) {
+        this.scoreDefensive = scoreDefensive;
+    }
+
+    public String getObjectName() {
+        return objectName;
+    }
+
+    public void setObjectName(String objectName) {
+        this.objectName = objectName;
+    }
 }
+
+
