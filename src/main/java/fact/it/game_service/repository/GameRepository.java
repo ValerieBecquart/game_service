@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface GameRepository extends JpaRepository<Game, Integer> {
     //Find all questions and order by theme.
-    List<Game> findAllByOrderByTheme();
-    //Find questions by theme
-    List<Game> findAllByThemeIs(String searchString);
+    List<Game> findAllByOrderByLevel();
+    //Find questions by level
+    List<Game> findAllByLevelIs(String searchString);
     //get question by id
     Game findGameByGameId(int id);
 
