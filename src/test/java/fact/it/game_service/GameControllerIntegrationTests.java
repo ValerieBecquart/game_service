@@ -34,10 +34,10 @@ public class GameControllerIntegrationTests {
     private GameRepository gameRepository;
 
 
-    private Game game1 = new Game(1,"vraag 1", 1, 123.45, 567.89, "juist", "fout", "fout",4,4,"EXTRA_PotionVial");
-    private Game game2 = new Game(2,"vraag 2", 1, 150, 50, "juist", "fout", "fout",5,0,"DEF_RoundShield");
-    private Game game3 = new Game(3,"vraag 3",2 , 124.45, 568.89, "juist", "fout", "fout",0,10,"OFF_Crossbow");
-    private Game game4 = new Game(4,"vraag 4",3, 122.45, 566.89, "juist", "fout", "fout",0,2,"OFF_Pickaxe");
+    private Game game1 = new Game("vraag 1", 1, 123.45, 567.89, "juist", "fout", "fout",4,4,"EXTRA_PotionVial");
+    private Game game2 = new Game("vraag 2", 1, 150, 50, "juist", "fout", "fout",5,0,"DEF_RoundShield");
+    private Game game3 = new Game("vraag 3",2 , 124.45, 568.89, "juist", "fout", "fout",0,10,"OFF_Crossbow");
+    private Game game4 = new Game("vraag 4",3, 122.45, 566.89, "juist", "fout", "fout",0,2,"OFF_Pickaxe");
 
 
 

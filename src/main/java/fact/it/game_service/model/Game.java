@@ -21,8 +21,8 @@ public class Game {
     public Game() {
     }
 
-    public Game(int gameId, String question, int level, double x, double y, String correctanswer, String answertwo, String answerthree, int scoreDefensive, int scoreOffensive, String objectName ) {
-        this.gameId = gameId;
+    public Game( String question, int level, double x, double y, String correctanswer, String answertwo, String answerthree, int scoreDefensive, int scoreOffensive, String objectName ) {
+
         this.question = question;
         this.level = level;
         this.x = x;
