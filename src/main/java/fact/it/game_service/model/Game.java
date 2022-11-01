@@ -22,8 +22,10 @@ public class Game {
     private int        scoreDefensive;
     private String objectName;
 
+
     public Game() {
-    }
+        //make new game
+        }
 
 
     public int getGameId() {
