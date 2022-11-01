@@ -24,14 +24,64 @@ String juist="juist";
 String fout="fout";
         if (gameRepository.count() == 0){
 
-//            Game g1= new Game();
-//            g1.setGameId(1);
-//            g1.set
-//            g1.setQuestion();
-            gameRepository.save(new Game(1,"vraag 1", 1, 123.45, 567.89, juist, fout, fout,4,4,"EXTRA_PotionVial"));
-            gameRepository.save(new Game(2,"vraag 2", 1, 150, 50, juist, fout, fout,5,0,"DEF_RoundShield"));
-            gameRepository.save(new Game(3,"vraag 3",1 , 124.45, 568.89, juist, fout, fout,0,10,"OFF_Crossbow"));
-            gameRepository.save(new Game(4,"vraag 4",2, 122.45, 566.89, juist, fout, fout,0,2,"OFF_Pickaxe"));
+            Game g1= new Game();
+            g1.setGameId(1);
+            g1.setLevel(1);
+            g1.setQuestion("Vraag 1");
+            g1.setCorrectanswer(juist);
+            g1.setAnswertwo(fout);
+            g1.setAnswerthree(fout);
+            g1.setObjectName("EXTRA_PotionVial");
+            g1.setY(5);
+            g1.setX(1);
+            g1.setScoreDefensive(10);
+            g1.setScoreOffensive(5);
+
+
+            Game g2= new Game();
+            g2.setGameId(2);
+            g2.setLevel(1);
+            g2.setQuestion("Vraag 2");
+            g2.setCorrectanswer(juist);
+            g2.setAnswertwo(fout);
+            g2.setAnswerthree(fout);
+            g2.setObjectName("DEF_RoundShield");
+            g2.setY(1);
+            g2.setX(4);
+            g2.setScoreDefensive(5);
+            g2.setScoreOffensive(0);
+
+            Game g3= new Game();
+            g3.setGameId(3);
+            g3.setLevel(2);
+            g3.setQuestion("Vraag 3");
+            g3.setCorrectanswer(juist);
+            g3.setAnswertwo(fout);
+            g3.setAnswerthree(fout);
+            g3.setObjectName("OFF_Crossbow");
+            g3.setY(5);
+            g3.setX(4);
+            g3.setScoreDefensive(0);
+            g3.setScoreOffensive(5);
+
+            Game g4= new Game();
+            g4.setGameId(4);
+            g4.setLevel(3);
+            g4.setQuestion("Vraag 4");
+            g4.setCorrectanswer(juist);
+            g4.setAnswertwo(fout);
+            g4.setAnswerthree(fout);
+            g4.setObjectName("OFF_Pickaxe");
+            g4.setY(1.5);
+            g4.setX(4);
+            g4.setScoreDefensive(0);
+            g4.setScoreOffensive(15);
+            
+            
+            gameRepository.save(g1);
+            gameRepository.save(g2);
+            gameRepository.save(g3);
+            gameRepository.save(g4);
         }
 
 
