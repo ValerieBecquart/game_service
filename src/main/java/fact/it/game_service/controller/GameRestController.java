@@ -4,6 +4,7 @@ import fact.it.game_service.model.Game;
 import fact.it.game_service.model.GameDTO;
 import fact.it.game_service.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,11 @@ public class GameRestController {
 String juist="juist";
 String fout="fout";
         if (gameRepository.count() == 0){
+
+//            Game g1= new Game();
+//            g1.setGameId(1);
+//            g1.set
+//            g1.setQuestion();
             gameRepository.save(new Game(1,"vraag 1", 1, 123.45, 567.89, juist, fout, fout,4,4,"EXTRA_PotionVial"));
             gameRepository.save(new Game(2,"vraag 2", 1, 150, 50, juist, fout, fout,5,0,"DEF_RoundShield"));
             gameRepository.save(new Game(3,"vraag 3",1 , 124.45, 568.89, juist, fout, fout,0,10,"OFF_Crossbow"));
@@ -90,8 +96,9 @@ String fout="fout";
 
     //DELETE: question
     @DeleteMapping("/question/{number}")
-    public ResponseEntity deleteQuestion(@PathVariable int number){
+    public ResponseEntity<HttpStatus>deleteQuestion(@PathVariable int number){
         Game q = gameRepository.findGameByGameId(number);
+
         if(q !=null) {
             gameRepository.delete(q);
             return ResponseEntity.ok().build();
