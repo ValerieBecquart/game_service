@@ -3,6 +3,7 @@ package fact.it.game_service.controller;
 import fact.it.game_service.model.Game;
 import fact.it.game_service.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
@@ -19,17 +20,17 @@ public class GameRestController {
     public void fillDB(){
 
         if (gameRepository.count() == 0){
-            gameRepository.save(new Game("vraag 1", 1, 123.45, 567.89, "juist", "fout", "fout",4,4,"EXTRA_PotionVial"));
-            gameRepository.save(new Game("vraag 2", 1, 150, 50, "juist", "fout", "fout",5,0,"DEF_RoundShield"));
-            gameRepository.save(new Game("vraag 3",1 , 124.45, 568.89, "juist", "fout", "fout",0,10,"OFF_Crossbow"));
-            gameRepository.save(new Game("vraag 4",2, 122.45, 566.89, "juist", "fout", "fout",0,2,"OFF_Pickaxe"));
+            gameRepository.save(new Game(1,"vraag 1", 1, 123.45, 567.89, "juist", "fout", "fout",4,4,"EXTRA_PotionVial"));
+            gameRepository.save(new Game(2,"vraag 2", 1, 150, 50, "juist", "fout", "fout",5,0,"DEF_RoundShield"));
+            gameRepository.save(new Game(3,"vraag 3",1 , 124.45, 568.89, "juist", "fout", "fout",0,10,"OFF_Crossbow"));
+            gameRepository.save(new Game(4,"vraag 4",2, 122.45, 566.89, "juist", "fout", "fout",0,2,"OFF_Pickaxe"));
         }
 
-        System.out.println(gameRepository.findGameByGameId(1).getQuestion());
+       System.out.println(gameRepository.findGameByGameId(1).getQuestion());
     }
 
     //get all questions
-    @GetMapping("/question")
+    @GetMapping("/questions")
     public List<Game> getAllQuestions(){
 
         return gameRepository.findAll();
@@ -52,9 +53,9 @@ public class GameRestController {
     }
 
     //PUT:
-    @PutMapping("/question/{number}")
-    public Game updateQuestion(@RequestBody Game questionDetails, @PathVariable int number){
-        Game q = gameRepository.findGameByGameId(number);
+    @PutMapping("/question")
+    public Game updateQuestion(@RequestBody Game questionDetails){
+        Game q = gameRepository.findGameByGameId(questionDetails.getGameId());
         q.setQuestion(questionDetails.getQuestion());
         q.setLevel(questionDetails.getLevel());
         q.setX(questionDetails.getX());
@@ -71,9 +72,16 @@ public class GameRestController {
 
     //DELETE: question
     @DeleteMapping("/question/{number}")
-    public void deleteQuestion(@PathVariable int number){
+    public ResponseEntity deleteQuestion(@PathVariable int number){
         Game q = gameRepository.findGameByGameId(number);
-        gameRepository.delete(q);
+        if(q !=null) {
+            gameRepository.delete(q);
+            return ResponseEntity.ok().build();
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+
+
     }
 
 
