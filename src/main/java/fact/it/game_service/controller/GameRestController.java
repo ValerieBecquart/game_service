@@ -36,10 +36,12 @@ public class GameRestController {
         return gameRepository.findAll();
     }
 
-    @GetMapping("/question/{id}")
-    public Game getQuestionById(@PathVariable int id){
-        Game q = gameRepository.findGameByGameId(id);
-        return q;
+    //Get question by object name
+    //GET: question?objectname={objectname}
+    @GetMapping("/question/{objectname}")
+    public Game getQuestionByObjectName(@PathVariable String objectname){
+        Game g = gameRepository.findGameByObjectName(objectname);
+        return g;
     }
     @GetMapping("/questionsbylevel/{level}")
     public List<Game> getAllQuestionsByLevel(@PathVariable int level){
