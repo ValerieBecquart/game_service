@@ -15,26 +15,16 @@ public class Game {
     private int level;
     private double x;
     private double y;
-    private String correctanswer, answertwo, answerthree;
-    private int scoreOffensive, scoreDefensive;
+    private String correctanswer;
+    private String       answertwo;
+    private String       answerthree;
+    private int scoreOffensive;
+    private int        scoreDefensive;
     private String objectName;
 
     public Game() {
     }
 
-    public Game(int gameId, String question, int level, double x, double y, String correctanswer, String answertwo, String answerthree, int scoreDefensive, int scoreOffensive, String objectName ) {
-this.gameId=gameId;
-        this.question = question;
-        this.level = level;
-        this.x = x;
-        this.y = y;
-        this.correctanswer = correctanswer;
-        this.answertwo = answertwo;
-        this.answerthree = answerthree;
-        this.objectName =  objectName;
-        this.scoreDefensive = scoreDefensive;
-        this.scoreOffensive=scoreOffensive;
-    }
 
     public int getGameId() {
         return gameId;

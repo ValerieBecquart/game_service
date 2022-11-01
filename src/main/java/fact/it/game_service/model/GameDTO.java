@@ -6,8 +6,11 @@ public class GameDTO {
     private int level;
     private double x;
     private double y;
-    private String correctanswer, answertwo, answerthree;
-    private int scoreOffensive, scoreDefensive;
+    private String correctanswer;
+    private String       answertwo;
+    private String       answerthree;
+    private int scoreOffensive;
+    private int        scoreDefensive;
     private String objectName;
 
     public int getGameId() {
