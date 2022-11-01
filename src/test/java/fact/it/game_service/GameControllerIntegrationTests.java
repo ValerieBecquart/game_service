@@ -21,11 +21,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.awt.*;
-/*
-@SpringBootTest() //the class as a class that contains tests
-@AutoConfigureMockMvc // sets up theMockMvc object for us to inject
+
+//@SpringBootTest() //the class as a class that contains tests
+//@AutoConfigureMockMvc // sets up theMockMvc object for us to inject
 public class GameControllerIntegrationTests {
-    @Autowired
+ /*   @Autowired
     private MockMvc mockMvc;
 
     //regular ReviewRepository connected to a test database
@@ -170,5 +170,7 @@ private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
                 .andExpect(status().isNotFound());
 
     }
+    */
+
     }
-*/
+
