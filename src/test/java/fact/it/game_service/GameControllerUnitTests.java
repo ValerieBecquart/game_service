@@ -21,9 +21,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-/*
-@SpringBootTest() //configures the class as a class that contains tests
-@AutoConfigureMockMvc //sets up the MockMvc object for us to inject
+
+//@SpringBootTest() //configures the class as a class that contains tests
+//@AutoConfigureMockMvc //sets up the MockMvc object for us to inject
 public class GameControllerUnitTests {
     /*
     @Autowired
@@ -127,8 +127,10 @@ public void givenquestion_whenPutQuestion_thenReturnJsonQuestion() throws Except
                 .andExpect(status().isNotFound());
 
     }
-    */
+
+
+     */
 
     }
 
-*/
+
