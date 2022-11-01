@@ -1,6 +1,7 @@
 package fact.it.game_service.controller;
 
 import fact.it.game_service.model.Game;
+import fact.it.game_service.model.GameDTO;
 import fact.it.game_service.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -50,8 +51,23 @@ public class GameRestController {
     }
     //POST: question
     @PostMapping("/question")
-    public Game createQuestion(@RequestBody Game question){
-        return gameRepository.save(question);
+    public Game createQuestion(@RequestBody GameDTO question){
+
+
+        Game peristentQuestion = new Game();
+        peristentQuestion.setGameId(question.getGameId());
+        peristentQuestion.setQuestion(question.getQuestion());
+        peristentQuestion.setLevel(question.getLevel());
+        peristentQuestion.setX(question.getX());
+        peristentQuestion.setY(question.getY());
+        peristentQuestion.setScoreOffensive(question.getScoreOffensive());
+        peristentQuestion.setScoreDefensive(question.getScoreDefensive());
+        peristentQuestion.setAnswertwo(question.getAnswertwo());
+        peristentQuestion.setAnswerthree(question.getAnswerthree());
+        peristentQuestion.setCorrectanswer(question.getCorrectanswer());
+        peristentQuestion.setObjectName(question.getObjectName());
+
+        return gameRepository.save(peristentQuestion);
     }
 
     //PUT:
