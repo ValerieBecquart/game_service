@@ -8,14 +8,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
+
 @SpringBootTest
 class GameServiceApplicationTests {
 /*
     @Autowired
     private GameRestController gameController;
 
-    @Autowired
-    private GameRepository gameRepository;
+
+
+//     @Autowired
+//     private GameRepository gameRepository;
+
 
     @Test
     void contextLoads() throws Exception {
@@ -24,5 +28,7 @@ class GameServiceApplicationTests {
     }
 */
 }
+
+
 
 
