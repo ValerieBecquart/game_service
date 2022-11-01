@@ -8,7 +8,8 @@ import javax.persistence.Id;
 @Entity
 public class Game {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private int gameId;
     private String question;
     private int level;
@@ -22,7 +23,7 @@ public class Game {
     }
 
     public Game(int gameId, String question, int level, double x, double y, String correctanswer, String answertwo, String answerthree, int scoreDefensive, int scoreOffensive, String objectName ) {
-        this.gameId = gameId;
+this.gameId=gameId;
         this.question = question;
         this.level = level;
         this.x = x;
