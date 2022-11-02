@@ -15,6 +15,7 @@ jobs:
         with:
           java-version: 11
 
+
       - name: Set up MariaDB for integration tests
         uses: getong/mariadb-action@v1.1
         with:

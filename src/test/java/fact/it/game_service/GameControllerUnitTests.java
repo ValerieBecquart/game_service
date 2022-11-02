@@ -108,7 +108,7 @@ public class GameControllerUnitTests {
 
 
 @Test
-public void givenquestion_whenPutQuestion_thenReturnJsonQuestion() throws Exception{
+public void givenquestion_whenPutQuestion_thenStatusOk() throws Exception{
     Game g1 = new Game();
     g1.setGameId(1);
     g1.setLevel(1);
@@ -142,21 +142,46 @@ public void givenquestion_whenPutQuestion_thenReturnJsonQuestion() throws Except
     mockMvc.perform(put("/question")
             .content(mapper.writeValueAsString(g1update))
             .contentType(MediaType.APPLICATION_JSON))
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.gameId",is(1)))
-            .andExpect(jsonPath("$.question",is("Vraag 1")))
-            .andExpect(jsonPath("$.level",is(1)))
-            .andExpect(jsonPath("$.x",is(1.0)))
-            .andExpect(jsonPath("$.y",is(5.0)))
-            .andExpect(jsonPath("$.correctanswer",is("juist")))
-            .andExpect(jsonPath("$.answertwo",is("fout")))
-            .andExpect(jsonPath("$.answerthree",is("fout")))
-            .andExpect(jsonPath("$.objectName",is("EXTRA_PotionVialADJUSTED")))
-            .andExpect(jsonPath("$.scoreDefensive",is(10)))
-            .andExpect(jsonPath("$.scoreOffensive",is(5)));
+            .andExpect(status().isOk());
     }
+    @Test
+    public void givenquestion_whenPutQuestion_thenStatusNotFound() throws Exception{
+        Game g1 = new Game();
+        g1.setGameId(1);
+        g1.setLevel(1);
+        g1.setQuestion("Vraag 1");
+        g1.setCorrectanswer("juist");
+        g1.setAnswertwo("fout");
+        g1.setAnswerthree("fout");
+        g1.setObjectName("EXTRA_PotionVial");
+        g1.setY(5);
+        g1.setX(1);
+        g1.setScoreDefensive(10);
+        g1.setScoreOffensive(5);
 
+
+        given(gameRepository.findGameByGameId(1)).willReturn(g1);
+
+        GameDTO g1update = new GameDTO();
+        g1update.setGameId(10);
+        g1update.setLevel(1);
+        g1update.setQuestion("Vraag 1");
+        g1update.setCorrectanswer("juist");
+        g1update.setAnswertwo("fout");
+        g1update.setAnswerthree("fout");
+        g1update.setObjectName("EXTRA_PotionVialADJUSTED");
+        g1update.setY(5);
+        g1update.setX(1);
+        g1update.setScoreDefensive(10);
+        g1update.setScoreOffensive(5);
+
+
+        mockMvc.perform(put("/question")
+                        .content(mapper.writeValueAsString(g1update))
+                        .contentType(MediaType.APPLICATION_JSON))
+
+                .andExpect(status().isNotFound());
+    }
 
     @Test
     public void givenGame_whenDeleteGame_thenStatusOk()throws Exception {
