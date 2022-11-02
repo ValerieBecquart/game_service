@@ -13,6 +13,6 @@ public interface GameRepository extends JpaRepository<Game, Integer> {
     //get question by id
     Game findGameByGameId(int gameId);
     //Get question by modelname
-    Game findGameByObjectName(String objectName);
+ Game findGameByObjectName(String objectName);
 
 }

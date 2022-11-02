@@ -9,7 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.text.ParseException;
 import java.util.List;
+import java.util.Objects;
 
 
 @RestController
@@ -128,19 +130,22 @@ String fout="fout";
 
     //PUT:
     @PutMapping("/question")
-    public Game updateQuestion(@RequestBody Game questionDetails){
-        Game q = gameRepository.findGameByGameId(questionDetails.getGameId());
-        q.setQuestion(questionDetails.getQuestion());
-        q.setLevel(questionDetails.getLevel());
-        q.setX(questionDetails.getX());
-        q.setY(questionDetails.getY());
-        q.setCorrectanswer(questionDetails.getCorrectanswer());
-        q.setAnswertwo(questionDetails.getAnswertwo());
-        q.setAnswerthree(questionDetails.getAnswerthree());
-        q.setObjectName(questionDetails.getObjectName());
-        q.setScoreDefensive(questionDetails.getScoreDefensive());
-        q.setScoreOffensive(questionDetails.getScoreOffensive());
-        return gameRepository.save(q);
+    public Game updateQuestion(@RequestBody GameDTO questionDetails){
+
+
+        Game game = gameRepository.findGameByGameId(questionDetails.getGameId());
+              game.setQuestion(questionDetails.getQuestion());
+        game.setLevel(questionDetails.getLevel());
+        game.setX(questionDetails.getX());
+        game.setY(questionDetails.getY());
+        game.setCorrectanswer(questionDetails.getCorrectanswer());
+        game.setScoreOffensive(questionDetails.getScoreOffensive());
+        game.setScoreDefensive(questionDetails.getScoreDefensive());
+        game.setAnswertwo(questionDetails.getAnswertwo());
+        game.setAnswerthree(questionDetails.getAnswerthree());
+              game.setObjectName(questionDetails.getObjectName());
+        gameRepository.save(game);
+        return game;
     }
 
 
