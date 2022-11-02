@@ -124,8 +124,8 @@ String fout="fout";
         peristentQuestion.setAnswerthree(question.getAnswerthree());
         peristentQuestion.setCorrectanswer(question.getCorrectanswer());
         peristentQuestion.setObjectName(question.getObjectName());
-
-        return gameRepository.save(peristentQuestion);
+        gameRepository.save(peristentQuestion);
+        return peristentQuestion;
     }
 
     //PUT:
@@ -151,7 +151,7 @@ String fout="fout";
 
     //DELETE: question
     @DeleteMapping("/question/{number}")
-    public ResponseEntity<HttpStatus>deleteQuestion(@PathVariable int number){
+    public ResponseEntity deleteQuestion(@PathVariable int number){
         Game q = gameRepository.findGameByGameId(number);
 
         if(q !=null) {
