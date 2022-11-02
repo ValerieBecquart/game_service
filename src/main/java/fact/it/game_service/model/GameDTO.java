@@ -23,7 +23,49 @@ public class GameDTO {
         return question;
     }
 
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
+    }
 
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public void setCorrectanswer(String correctanswer) {
+        this.correctanswer = correctanswer;
+    }
+
+    public void setAnswertwo(String answertwo) {
+        this.answertwo = answertwo;
+    }
+
+    public void setAnswerthree(String answerthree) {
+        this.answerthree = answerthree;
+    }
+
+    public void setScoreOffensive(int scoreOffensive) {
+        this.scoreOffensive = scoreOffensive;
+    }
+
+    public void setScoreDefensive(int scoreDefensive) {
+        this.scoreDefensive = scoreDefensive;
+    }
+
+    public void setObjectName(String objectName) {
+        this.objectName = objectName;
+    }
 
     public int getLevel() {
         return level;
