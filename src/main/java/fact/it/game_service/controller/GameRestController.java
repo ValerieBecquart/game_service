@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 
 @RestController
@@ -130,28 +131,31 @@ String fout="fout";
 
     //PUT:
     @PutMapping("/question")
-    public Game updateQuestion(@RequestBody GameDTO questionDetails){
+    public ResponseEntity<Void> updateQuestion(@RequestBody GameDTO questionDetails) {
+        Optional<Game> gameFetch = Optional.ofNullable(gameRepository.findGameByGameId(questionDetails.getGameId()));
+        if (gameFetch.isPresent()) {
+            Game game = new Game();
+            game.setQuestion(questionDetails.getQuestion());
+            game.setLevel(questionDetails.getLevel());
+            game.setX(questionDetails.getX());
+            game.setY(questionDetails.getY());
+            game.setCorrectanswer(questionDetails.getCorrectanswer());
+            game.setScoreOffensive(questionDetails.getScoreOffensive());
+            game.setScoreDefensive(questionDetails.getScoreDefensive());
+            game.setAnswertwo(questionDetails.getAnswertwo());
+            game.setAnswerthree(questionDetails.getAnswerthree());
+            game.setObjectName(questionDetails.getObjectName());
+            gameRepository.save(game);
 
-
-        Game game = gameRepository.findGameByGameId(questionDetails.getGameId());
-              game.setQuestion(questionDetails.getQuestion());
-        game.setLevel(questionDetails.getLevel());
-        game.setX(questionDetails.getX());
-        game.setY(questionDetails.getY());
-        game.setCorrectanswer(questionDetails.getCorrectanswer());
-        game.setScoreOffensive(questionDetails.getScoreOffensive());
-        game.setScoreDefensive(questionDetails.getScoreDefensive());
-        game.setAnswertwo(questionDetails.getAnswertwo());
-        game.setAnswerthree(questionDetails.getAnswerthree());
-              game.setObjectName(questionDetails.getObjectName());
-        gameRepository.save(game);
-        return game;
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
-
 
     //DELETE: question
     @DeleteMapping("/question/{number}")
-    public ResponseEntity deleteQuestion(@PathVariable int number){
+    public ResponseEntity<Void> deleteQuestion(@PathVariable int number){
         Game q = gameRepository.findGameByGameId(number);
 
         if(q !=null) {

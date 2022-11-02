@@ -15,8 +15,6 @@ jobs:
         with:
           java-version: 11
 
-      - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots package
 
       - name: Set up MariaDB for integration tests
         uses: getong/mariadb-action@v1.1
