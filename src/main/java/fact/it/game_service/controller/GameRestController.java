@@ -124,8 +124,8 @@ String fout="fout";
         peristentQuestion.setAnswerthree(question.getAnswerthree());
         peristentQuestion.setCorrectanswer(question.getCorrectanswer());
         peristentQuestion.setObjectName(question.getObjectName());
-
-        return gameRepository.save(peristentQuestion);
+        gameRepository.save(peristentQuestion);
+        return peristentQuestion;
     }
 
     //PUT:
