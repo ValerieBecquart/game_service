@@ -151,7 +151,7 @@ String fout="fout";
 
     //DELETE: question
     @DeleteMapping("/question/{number}")
-    public ResponseEntity<HttpStatus>deleteQuestion(@PathVariable int number){
+    public ResponseEntity deleteQuestion(@PathVariable int number){
         Game q = gameRepository.findGameByGameId(number);
 
         if(q !=null) {
