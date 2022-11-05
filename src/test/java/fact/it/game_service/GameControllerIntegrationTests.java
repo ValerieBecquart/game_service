@@ -119,7 +119,7 @@ private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
 
 
     @Test
-    public void givenQuestionId_whenGetQuestionByObjectNam_thenReturnJsonQuestion()throws Exception{
+    public void givenQuestionId_whenGetQuestionByObjectName_thenReturnJsonQuestion()throws Exception{
         mockMvc.perform(get("/question/{objectname}","EXTRA_PotionVial"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
