@@ -24,7 +24,7 @@ import java.awt.*;
 
 @SpringBootTest() //the class as a class that contains tests
 @AutoConfigureMockMvc // sets up theMockMvc object for us to inject
-public class GameControllerIntegrationTests {
+ class GameControllerIntegrationTests {
     @Autowired
     private MockMvc mockMvc;
 
@@ -119,7 +119,7 @@ private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
 
 
     @Test
-    public void givenQuestionId_whenGetQuestionByObjectName_thenReturnJsonQuestion()throws Exception{
+     void givenQuestionId_whenGetQuestionByObjectName_thenReturnJsonQuestion()throws Exception{
         mockMvc.perform(get("/question/{objectname}","EXTRA_PotionVial"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -137,7 +137,7 @@ private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
     }
 
     @Test
-    public void givenLevel_whenGetQuestionsByLevel_thenReturnJsonQuestion()throws Exception{
+     void givenLevel_whenGetQuestionsByLevel_thenReturnJsonQuestion()throws Exception{
         mockMvc.perform(get("/questionsbylevel/{level}",1))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -166,7 +166,7 @@ private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
                 .andExpect(jsonPath("$[1].scoreOffensive",is(0)));
     }
     @Test
-    public void returnJsonQuestions() throws Exception{
+     void returnJsonQuestions() throws Exception{
         mockMvc.perform(get("/questions"))
 
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -220,7 +220,7 @@ private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
                 .andExpect(jsonPath("$[3].scoreOffensive",is(15)));
     }
     @Test
-    public void whenPostGame_thenReturnJsonGame()throws Exception {
+     void whenPostGame_thenReturnJsonGame()throws Exception {
  Game game5= new Game();
         game5.setGameId(5);
         game5.setLevel(10);
@@ -252,7 +252,7 @@ private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
                 .andExpect(jsonPath("$.objectName", is("OFF_Test")));
     }
     @Test
-    public void givenQuestion_whenUpdateQuestion_thenStatusOk() throws Exception{
+     void givenQuestion_whenUpdateQuestion_thenStatusOk() throws Exception{
         GameDTO gameUpdated = new GameDTO();
         gameUpdated.setGameId(1);
         gameUpdated.setLevel(1);
@@ -274,7 +274,7 @@ private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
     }
 
     @Test
-    public void givenQuestion_whenUpdateQuestion_thenStatusNotFound() throws Exception {
+     void givenQuestion_whenUpdateQuestion_thenStatusNotFound() throws Exception {
         GameDTO gameUpdated = new GameDTO();
         gameUpdated.setGameId(10);
         gameUpdated.setLevel(1);
@@ -294,7 +294,7 @@ private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
                 .andExpect(status().isNotFound());
     }
     @Test
-    public void givenGame_whenDeleteGame_thenStatusOk()throws Exception {
+     void givenGame_whenDeleteGame_thenStatusOk()throws Exception {
 
         mockMvc.perform(delete("/question/{number}",1)
                         .contentType(MediaType.APPLICATION_JSON))
@@ -302,7 +302,7 @@ private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
 
     }
     @Test
-    public void givenGame_whenDeleteGame_thenStatusNotFound()throws Exception {
+     void givenGame_whenDeleteGame_thenStatusNotFound()throws Exception {
 
         mockMvc.perform(delete("/question/{number}",10)
                         .contentType(MediaType.APPLICATION_JSON))
