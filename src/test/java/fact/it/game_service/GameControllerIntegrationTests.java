@@ -301,14 +301,14 @@ private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
                 .andExpect(status().isOk());
 
     }
-    @Test
-     void givenGame_whenDeleteGame_thenStatusNotFound()throws Exception {
-
-        mockMvc.perform(delete("/question/{number}",10)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound());
-
-    }
+//    @Test
+//     void givenGame_whenDeleteGame_thenStatusNotFound()throws Exception {
+//
+//        mockMvc.perform(delete("/question/{number}",10)
+//                        .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isNotFound());
+//
+//    }
 
 
     }
