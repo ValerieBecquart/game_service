@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest() //configures the class as a class that contains tests
 @AutoConfigureMockMvc //sets up the MockMvc object for us to inject
-public class GameControllerUnitTests {
+ class GameControllerUnitTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -38,7 +38,7 @@ public class GameControllerUnitTests {
 
     private ObjectMapper mapper = new ObjectMapper();
     @Test
-    public void givenObjectName_whenGetQuestionByObjectName_thenReturnJsonQuestion()throws Exception {
+     void givenObjectName_whenGetQuestionByObjectName_thenReturnJsonQuestion()throws Exception {
         Game g1= new Game();
 
         g1.setGameId(1);
@@ -72,7 +72,7 @@ public class GameControllerUnitTests {
                 .andExpect(jsonPath("$.scoreOffensive",is(5)));
     }
     @Test
-    public void givenLevel_whenGetQuestionsByLevel_thenReturnList()throws Exception {
+     void givenLevel_whenGetQuestionsByLevel_thenReturnList()throws Exception {
         Game g1= new Game();
 
         g1.setGameId(3);
@@ -111,7 +111,7 @@ public class GameControllerUnitTests {
 
     }
     @Test
-    public void whenPostGame_thenReturnJsonGame()throws Exception {
+     void whenPostGame_thenReturnJsonGame()throws Exception {
         GameDTO game5 = new GameDTO();
         game5.setGameId(5);
         game5.setLevel(10);
@@ -146,7 +146,7 @@ public class GameControllerUnitTests {
     }
 
 @Test
-public void givenquestion_whenPutQuestion_thenStatusOk() throws Exception{
+ void givenquestion_whenPutQuestion_thenStatusOk() throws Exception{
     Game g1 = new Game();
     g1.setGameId(1);
     g1.setLevel(1);
@@ -183,7 +183,7 @@ public void givenquestion_whenPutQuestion_thenStatusOk() throws Exception{
             .andExpect(status().isOk());
     }
     @Test
-    public void givenquestion_whenPutQuestion_thenStatusNotFound() throws Exception{
+     void givenquestion_whenPutQuestion_thenStatusNotFound() throws Exception{
         Game g1 = new Game();
         g1.setGameId(1);
         g1.setLevel(1);
@@ -222,7 +222,7 @@ public void givenquestion_whenPutQuestion_thenStatusOk() throws Exception{
     }
 
     @Test
-    public void givenGame_whenDeleteGame_thenStatusOk()throws Exception {
+     void givenGame_whenDeleteGame_thenStatusOk()throws Exception {
         Game g1= new Game();
 
         g1.setGameId(1);
@@ -255,7 +255,7 @@ public void givenquestion_whenPutQuestion_thenStatusOk() throws Exception{
 //    }
 
     @Test
-    public void whenGetQuestions_thenReturnList()throws Exception {
+     void whenGetQuestions_thenReturnList()throws Exception {
         String juist="juist";
         String fout="fout";
         Game g1= new Game();
