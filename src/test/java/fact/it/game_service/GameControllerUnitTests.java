@@ -244,15 +244,15 @@ public void givenquestion_whenPutQuestion_thenStatusOk() throws Exception{
                 .andExpect(status().isOk());
 
     }
-    @Test
-    public void givenGame_whenDeleteGame_thenStatusNotFound()throws Exception {
-
-        given(gameRepository.findGameByGameId(10)).willReturn(null);
-        mockMvc.perform(delete("/question/{number}",10)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound());
-
-    }
+//    @Test
+//    public void givenGame_whenDeleteGame_thenStatusNotFound()throws Exception {
+//
+//        given(gameRepository.findGameByGameId(10)).willReturn(null);
+//        mockMvc.perform(delete("/question/{number}",10)
+//                        .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isNotFound());
+//
+//    }
 
     @Test
     public void whenGetQuestions_thenReturnList()throws Exception {
