@@ -112,9 +112,7 @@ String fout="fout";
 
     @GetMapping("/highestlevel")
     public Game getHighestLevel(){
-       Game q = gameRepository.findAll().stream().max(Comparator.comparing(g -> g.getLevel()))
-                .get();
-
+        Game q = gameRepository.findFirstByOrderByLevelDesc();
        return q;
     }
 

@@ -14,5 +14,5 @@ public interface GameRepository extends JpaRepository<Game, Integer> {
     Game findGameByGameId(int gameId);
     //Get question by modelname
  Game findGameByObjectName(String objectName);
-
+Game findFirstByOrderByLevelDesc();
 }
