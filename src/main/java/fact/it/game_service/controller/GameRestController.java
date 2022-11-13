@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 
+import java.util.Comparator;
 import java.util.List;
 
 import java.util.Optional;
@@ -108,6 +109,15 @@ String fout="fout";
 
         return gameRepository.findAllByLevelIs(level);
     }
+
+    @GetMapping("/highestlevel")
+    public Game getHighestLevel(){
+       Game q = gameRepository.findAll().stream().max(Comparator.comparing(g -> g.getLevel()))
+                .get();
+
+       return q;
+    }
+
     //POST: question
     @PostMapping("/question")
     public Game createQuestion(@RequestBody GameDTO question){
