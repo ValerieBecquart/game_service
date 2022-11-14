@@ -93,7 +93,7 @@ import java.awt.*;
 
 }
 
-private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
+    private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
 
 
 
@@ -117,6 +117,60 @@ private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
 
 
 
+    @Test
+    void whenGetAllQuestions_thenReturnJsonQuestion() throws Exception{
+        mockMvc.perform(get("/questions"))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].gameId",is(1)))
+                .andExpect(jsonPath("$[0].question",is("Vraag 1")))
+                .andExpect(jsonPath("$[0].level",is(1)))
+                .andExpect(jsonPath("$[0].x",is(1.0)))
+                .andExpect(jsonPath("$[0].y",is(5.0)))
+                .andExpect(jsonPath("$[0].correctanswer",is("juist")))
+                .andExpect(jsonPath("$[0].answertwo",is("fout")))
+                .andExpect(jsonPath("$[0].answerthree",is("fout")))
+                .andExpect(jsonPath("$[0].objectName",is("EXTRA_PotionVial")))
+                .andExpect(jsonPath("$[0].scoreDefensive",is(10)))
+                .andExpect(jsonPath("$[0].scoreOffensive",is(5)))
+
+                .andExpect(jsonPath("$[1].gameId",is(2)))
+                .andExpect(jsonPath("$[1].question",is("Vraag 2")))
+                .andExpect(jsonPath("$[1].level",is(1)))
+                .andExpect(jsonPath("$[1].x",is(4.0)))
+                .andExpect(jsonPath("$[1].y",is(1.0)))
+                .andExpect(jsonPath("$[1].correctanswer",is("juist")))
+                .andExpect(jsonPath("$[1].answertwo",is("fout")))
+                .andExpect(jsonPath("$[1].answerthree",is("fout")))
+                .andExpect(jsonPath("$[1].objectName",is("DEF_RoundShield")))
+                .andExpect(jsonPath("$[1].scoreDefensive",is(5)))
+                .andExpect(jsonPath("$[1].scoreOffensive",is(0)))
+
+                .andExpect(jsonPath("$[2].gameId",is(3)))
+                .andExpect(jsonPath("$[2].question",is("Vraag 3")))
+                .andExpect(jsonPath("$[2].level",is(2)))
+                .andExpect(jsonPath("$[2].x",is(4.0)))
+                .andExpect(jsonPath("$[2].y",is(5.0)))
+                .andExpect(jsonPath("$[2].correctanswer",is("juist")))
+                .andExpect(jsonPath("$[2].answertwo",is("fout")))
+                .andExpect(jsonPath("$[2].answerthree",is("fout")))
+                .andExpect(jsonPath("$[2].objectName",is("OFF_Crossbow")))
+                .andExpect(jsonPath("$[2].scoreDefensive",is(0)))
+                .andExpect(jsonPath("$[2].scoreOffensive",is(5)))
+
+                .andExpect(jsonPath("$[3].gameId",is(4)))
+                .andExpect(jsonPath("$[3].question",is("Vraag 4")))
+                .andExpect(jsonPath("$[3].level",is(3)))
+                .andExpect(jsonPath("$[3].x",is(4.0)))
+                .andExpect(jsonPath("$[3].y",is(1.5)))
+                .andExpect(jsonPath("$[3].correctanswer",is("juist")))
+                .andExpect(jsonPath("$[3].answertwo",is("fout")))
+                .andExpect(jsonPath("$[3].answerthree",is("fout")))
+                .andExpect(jsonPath("$[3].objectName",is("OFF_Pickaxe")))
+                .andExpect(jsonPath("$[3].scoreDefensive",is(0)))
+                .andExpect(jsonPath("$[3].scoreOffensive",is(15)));
+
+    }
 
     @Test
      void givenQuestionId_whenGetQuestionByObjectName_thenReturnJsonQuestion()throws Exception{
@@ -168,7 +222,7 @@ private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
 
     @Test
      void whenPostGame_thenReturnJsonGame()throws Exception {
- Game game5= new Game();
+        Game game5= new Game();
         game5.setGameId(5);
         game5.setLevel(10);
         game5.setQuestion("Vraag 5");
@@ -276,5 +330,5 @@ private ObjectMapper mapper = new ObjectMapper(); //transform objects to Json
     }
 
 
-    }
+}
 
