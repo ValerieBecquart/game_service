@@ -4,13 +4,9 @@ import fact.it.game_service.model.Game;
 import fact.it.game_service.model.GameDTO;
 import fact.it.game_service.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.PostConstruct;
-
-import java.util.Comparator;
 import java.util.List;
 
 import java.util.Optional;
@@ -112,8 +108,7 @@ String fout="fout";
 
     @GetMapping("/highestlevel")
     public Game getHighestLevel(){
-        Game q = gameRepository.findFirstByOrderByLevelDesc();
-       return q;
+       return gameRepository.findFirstByOrderByLevelDesc();
     }
 
     //POST: question
