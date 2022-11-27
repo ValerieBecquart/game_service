@@ -20,8 +20,6 @@ public class GameRestController {
 
     @PostConstruct
     public void fillDB(){
-String juist="juist";
-String fout="fout";
         if (gameRepository.count() == 0){
 
             Game g1= new Game();
